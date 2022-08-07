@@ -19,3 +19,8 @@ class Ball(Turtle):
 
     def bounce_paddle(self):
         self.angle = 180 - self.angle
+
+    def refresh(self):
+        self.home()
+        if self.heading() == 45 or self.heading() == 315:
+            self.angle = 225

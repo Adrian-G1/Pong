@@ -34,4 +34,8 @@ while game_is_on:
     if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
         ball.bounce_paddle()
 
+    # Implement score boundaries
+    if ball.xcor() > 390 or ball.xcor() < -390:
+        ball.refresh()
+
 screen.exitonclick()
