@@ -14,5 +14,8 @@ class Ball(Turtle):
         self.setheading(self.angle)
         self.forward(10)
 
-    def bounce(self):
+    def bounce_wall(self):
         self.angle = 360 - self.angle
+
+    def bounce_paddle(self):
+        self.angle = 180 - self.angle
