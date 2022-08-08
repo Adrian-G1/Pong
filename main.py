@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 from time import sleep
 
 screen = Screen()
@@ -13,6 +14,7 @@ r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 
 ball = Ball()
+score = Scoreboard()
 
 screen.listen()
 screen.onkeypress(r_paddle.go_up, 'Up')
@@ -31,11 +33,12 @@ while game_is_on:
         ball.bounce_wall()
 
     # Detect collision with paddles
-    if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330:
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 325 or ball.distance(l_paddle) < 50 and ball.xcor() < -325:
         ball.bounce_paddle()
+        ball.increase_speed()
 
     # Implement score boundaries
-    if ball.xcor() > 390 or ball.xcor() < -390:
-        ball.refresh()
+    ball.increase_score(ball.xcor(), score)
+
 
 screen.exitonclick()
